@@ -10,7 +10,7 @@
     { self, nixpkgs }:
     {
       nixosModules = {
-        nix-iwd-provisioning = ./provisioning.nix;
+        nix-iwd-provisioning = ./modules/provisioning.nix;
       };
       # homeManagerModule = { config }: { imports = [ ./provisioning.nix ]; };
     };
