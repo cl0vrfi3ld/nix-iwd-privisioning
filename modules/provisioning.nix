@@ -62,7 +62,7 @@ in
   config =
 
     mkIf cfg.enable (
-      lib.mkMerge [
+      mkMerge [
         {
         }
         (
