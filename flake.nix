@@ -9,12 +9,9 @@
   outputs =
     { self, nixpkgs }:
     {
-
-      nixosModules.nix-iwd-provisioning =
-        { config, lib }:
-        {
-          imports = [ ./. ];
-        };
+      nixosModules = {
+        nix-iwd-provisioning = ./modules/provisioning.nix;
+      };
       # homeManagerModule = { config }: { imports = [ ./provisioning.nix ]; };
     };
 }
