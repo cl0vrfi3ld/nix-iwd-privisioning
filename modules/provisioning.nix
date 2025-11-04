@@ -9,7 +9,7 @@
 with lib;
 
 let
-  cfg = config.programs.foo;
+  cfg = config.networking.wireless.iwd.provisioning;
   iwdConfigDir = "/var/lib/iwd";
   eduroamFile = "eduroam.8021x";
 
