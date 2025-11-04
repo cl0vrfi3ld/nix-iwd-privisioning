@@ -75,7 +75,7 @@ in
       }
       (
         let
-          edu = cfg.eduroam;
+          edu = config.networking.wireless.iwd.provisioning.eduroam;
           p1ID = edu.phase1Identity;
           domain = edu.domain;
           caCert = edu.caCert;
@@ -87,7 +87,7 @@ in
           eduroamProvisioningFile = pkgs.writeText "${eduroamFile}" ''
             [Security]
             EAP-Method=PEAP
-            ${lib.optionalString (p1ID != "") "EAP-Identity=${p1ID}@${domain}"}
+            ${lib.optionalString (p1ID != "") "EAP-Identity=${builtins.toString edu.phase1Identity}@${domain}"}
             ${lib.optionalString (caCert != "") "EAP-PEAP-CACert=${caCert}"}
             ${lib.optionalString (domainMask != "") "EAP-PEAP-ServerDomainMask=${domainMask}.${domain}"}
             EAP-PEAP-Phase2-Method=MSCHAPV2
