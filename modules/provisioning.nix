@@ -68,7 +68,7 @@ in
       }
       (
         let
-          edu = cfg.eduroam;
+          edu = cfg.eduroam.options;
           p1ID = edu.phase1Identity;
           domain = domain;
           caCert = edu.caCert;
@@ -92,7 +92,7 @@ in
             Autoconnect=true
           '';
         in
-        mkIf cfg.eduroam.enable {
+        mkIf edu.enable {
           systemd.services.iwd-provisioning_eduroam = {
             description = "Ensure the presence of eduroam provisioning files before iwd starts up";
             # Dependencies: run before iwd, and require it
