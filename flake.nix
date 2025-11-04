@@ -3,21 +3,18 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    provisioning-module.url = ./.;
+    # provisioning-module.url = ./.;
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      provisioning-module,
-    }:
+    { self, nixpkgs }:
     {
 
-      nixosModules.nix-iwd-provisioning = { config }: provisioning-module;
-      # {
-      #   imports = [ ./. ];
-      # };
+      nixosModules.nix-iwd-provisioning =
+        { config, lib }:
+        {
+          imports = [ ./. ];
+        };
       # homeManagerModule = { config }: { imports = [ ./provisioning.nix ]; };
     };
 }
