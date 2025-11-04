@@ -75,7 +75,7 @@ in
       }
       (
         let
-          edu = config.networking.wireless.iwd.provisioning.edu;
+          edu = config.networking.wireless.iwd.provisioning.eduroam;
           p1ID = edu.phase1Identity.value;
           domain = edu.domain;
           caCert = edu.caCert;
