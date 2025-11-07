@@ -90,8 +90,8 @@ in
             ${lib.optionalString (edu.serverDomainMask != null) "EAP-PEAP-ServerDomainMask=${edu.serverDomainMask}.${edu.domain}"}
             EAP-PEAP-Phase2-Method=MSCHAPV2
             EAP-PEAP-Phase2-Identity=${edu.username}@${edu.domain}
-            ${lib.optionalString (edu.password != null) "EAP-PEAP-Phase2-Password=${edu.password}"}
-            ${lib.optionalString (edu.passwordHash != null) "EAP-PEAP-Phase2-Password-Hash=${edu.passwordHash}"}
+            ${lib.optionalString (!builtins.isNull edu.password) "EAP-PEAP-Phase2-Password=${edu.password}"}
+            ${lib.optionalString (!builtins.isNull edu.passwordHash) "EAP-PEAP-Phase2-Password-Hash=${edu.passwordHash}"}
 
             [Settings]
             Autoconnect=true
