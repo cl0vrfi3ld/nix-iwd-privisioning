@@ -34,13 +34,13 @@ in
               example = "cnolan123";
             };
             serverDomainMask = mkOption {
-              type = types.str;
-              default = "radius";
+              type = types.nullOr types.str;
+              default = null;
               example = "radius";
             };
             domain = mkOption {
-              type =  types.nullOr types.str;
-              default = null;
+              type = types.str;
+
               example = "university.edu";
             };
             password = mkOption {
