@@ -98,6 +98,7 @@ in
           '';
         in
         mkIf edu.enable {
+          assertions = [ {assertion = (!builtins.isNull edu.password) || (!builtins.isNull edu.passwordHash);} ];
           systemd.services.iwd-provisioning_eduroam = {
             description = "Ensure the presence of eduroam provisioning files before iwd starts up";
             # Dependencies: run before iwd, and require it
