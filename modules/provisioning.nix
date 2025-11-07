@@ -22,7 +22,6 @@ in
       eduroam = mkOption {
         type = types.submodule {
 
-          description = "settings for eduroam";
           options = {
             enable = mkEnableOption "enable eduroam provisioning";
             phase1Identity = mkOption {
