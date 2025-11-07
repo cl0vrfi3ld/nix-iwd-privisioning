@@ -36,11 +36,11 @@ in
             serverDomainMask = mkOption {
               type = types.str;
               default = "radius";
-              example = "radius.node";
+              example = "radius";
             };
             domain = mkOption {
-              type = types.str;
-              # default = "";
+              type =  types.nullOr types.str;
+              default = null;
               example = "university.edu";
             };
             password = mkOption {
