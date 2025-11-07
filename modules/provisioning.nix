@@ -25,7 +25,7 @@ in
             enable = mkEnableOption "enable eduroam provisioning";
             phase1Identity = mkOption {
               type = types.nullOr types.str;
-              default = null;
+              default = "anonymous";
               example = "eduroamIDENTITY";
             };
             username = mkOption {
