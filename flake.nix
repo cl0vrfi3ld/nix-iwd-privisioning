@@ -10,8 +10,8 @@
     { self }:
     {
       nixosModules = {
-        nix-iwd-provisioning = ./modules/provisioning.nix;
-        nix-iwd-eduroam = ./modules/eduroam.nix;
+        iwd-provisioning = ./modules/provisioning.nix;
+        iwd-eduroam = ./modules/eduroam.nix;
       };
       # homeManagerModule = { config }: { imports = [ ./provisioning.nix ]; };
     };
