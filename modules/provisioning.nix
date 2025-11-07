@@ -74,24 +74,24 @@ in
       (
         let
           edu = config.iwd-provisioning.eduroam;
-          p1ID = edu.phase1Identity;
-          domain = edu.domain;
-          caCert = edu.caCert;
-          domainMask = edu.serverDomainMask;
-          uname = edu.username;
-          psswd = edu.password;
-          hash = edu.passwordHash;
+          # p1ID = edu.phase1Identity;
+          # domain = edu.domain;
+          # caCert = edu.caCert;
+          # domainMask = edu.serverDomainMask;
+          # uname = edu.username;
+          # psswd = edu.password;
+          # hash = edu.passwordHash;
           # TODO: embed cacert in cfg file
           eduroamProvisioningFile = pkgs.writeText eduroamFile ''
             [Security]
             EAP-Method=PEAP
-            ${lib.optionalString (p1ID != null) "EAP-Identity=${p1ID}@${domain}"}
-            ${lib.optionalString (caCert != null) "EAP-PEAP-CACert=${caCert}"}
-            ${lib.optionalString (domainMask != null) "EAP-PEAP-ServerDomainMask=${domainMask}.${domain}"}
+            ${lib.optionalString (edu.phase1Identity != null) "EAP-Identity=${edu.phase1Identity}@${edu.domain}"}
+            ${lib.optionalString (edu.caCert != null) "EAP-PEAP-CACert=${edu.caCert}"}
+            ${lib.optionalString (edu.serverDomainMask != null) "EAP-PEAP-ServerDomainMask=${edu.serverDomainMask}.${edu.domain}"}
             EAP-PEAP-Phase2-Method=MSCHAPV2
-            EAP-PEAP-Phase2-Identity=${uname}@${edu.domain}
-            ${lib.optionalString (psswd != null) "EAP-PEAP-Phase2-Password=${psswd}"}
-            ${lib.optionalString (hash != null) "EAP-PEAP-Phase2-Password-Hash=${hash}"}
+            EAP-PEAP-Phase2-Identity=${edu.username}@${edu.domain}
+            ${lib.optionalString (edu.password != null) "EAP-PEAP-Phase2-Password=${edu.password}"}
+            ${lib.optionalString (edu.passwordHash != null) "EAP-PEAP-Phase2-Password-Hash=${edu.passwordHash}"}
 
             [Settings]
             Autoconnect=true
