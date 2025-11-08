@@ -113,7 +113,7 @@ in
         mkIf edu.enable {
           assertions = [
             {
-              assertion = (!builtins.isNull edu.password) || (!builtins.isNull edu.passwordHash);
+              assertion = (!builtins.isNull edu.password) || (!builtins.isNull edu.passwordHash) || (!builtins.isNull edu.passwordPath);
               message = "either a password or a password hash must be provided";
             }
           ];
@@ -143,7 +143,7 @@ in
                   EAP-PEAP-Phase2-Method=MSCHAPV2
                   EAP-PEAP-Phase2-Identity=${edu.username}@${edu.domain}
                   ${lib.optionalString (!builtins.isNull edu.password) "EAP-PEAP-Phase2-Password=${edu.password}"}
-                  ${lib.optionalString (!builtins.isNull edu.passwordpath) "EAP-PEAP-Phase2-Password=$SECRET"}
+                  ${lib.optionalString (!builtins.isNull edu.passwordPath) "EAP-PEAP-Phase2-Password=$SECRET"}
                   ${lib.optionalString (
                     !builtins.isNull edu.passwordHash
                   ) "EAP-PEAP-Phase2-Password-Hash=${edu.passwordHash}"}
