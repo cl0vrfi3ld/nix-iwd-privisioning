@@ -132,6 +132,7 @@ in
               ExecStart = ''
                 /run/current-system/sw/bin/bash -c ' \
                   mkdir -p ${iwdConfigDir} && \
+                  rm -f ${iwdConfigDir}/${eduroamFileName} && \
                   echo "[Security]" > ${iwdConfigDir}/${eduroamFileName} && \
                   echo "EAP-Method=PEAP" >> ${iwdConfigDir}/${eduroamFileName} && \
                   ${lib.optionalString (edu.phase1Identity != null)
